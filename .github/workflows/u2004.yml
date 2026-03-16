@@ -1,4 +1,4 @@
-name: Ubuntu2004
+name: Ubuntu2204
 
 on:
   push:
