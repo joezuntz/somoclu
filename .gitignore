@@ -22,7 +22,7 @@ config.status
 autom4te.cache/
 configure~
 
-# Python distribution
+# Python distribution files
 src/Python/dist/
 src/Python/build/
 src/Python/*.so
