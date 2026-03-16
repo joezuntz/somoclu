@@ -40,7 +40,7 @@
 #include "somoclu.h"
 #include "io.h"
 
-using std::string;
+using namespace std;
 
 /// For synchronized timing
 #ifndef MPI_WTIME_IS_GLOBAL

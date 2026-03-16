@@ -1,4 +1,4 @@
-name: Ubuntu2004
+name: Ubuntu2204
 
 on:
   push:
@@ -8,14 +8,18 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: ls
         run: ls -la  ${{github.workspace}}
 
       - name: Install deps
-        run: sudo apt install -y swig autoconf automake build-essential python3-pip python3-numpy
+        run: |
+          sudo apt install -y swig autoconf automake build-essential python3-pip
+          pip3 install "numpy>=2" matplotlib scipy pytest
 
       - name: Configure
         run: |
@@ -29,11 +33,17 @@ jobs:
           make python3_wheel
           ls -la  ${{github.workspace}}/src/Python/dist/
 
-      - uses: actions/upload-artifact@v2
+      - name: Install Python wheel
+        run: pip3 install ${{github.workspace}}/src/Python/dist/*.whl
+
+      - name: Run Python tests
+        run: python3 -m pytest ${{github.workspace}}/src/Python/tests/ -v
+
+      - uses: actions/upload-artifact@v4
         with:
           name: libsomoclu.so
           path: ${{github.workspace}}/src/libsomoclu.so
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: python_dist_wheel
           path: ${{github.workspace}}/src/Python/dist/

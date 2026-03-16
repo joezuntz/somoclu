@@ -254,7 +254,7 @@ class Somoclu(object):
         oldn_dim = self.n_dim
         if data.dtype != np.float32:
             print("Warning: data was not float32. A 32-bit copy was made")
-            self._data = np.float32(data)
+            self._data = np.array(data, dtype=np.float32)
         else:
             self._data = data
         self.n_vectors, self.n_dim = data.shape
@@ -545,7 +545,7 @@ class Somoclu(object):
             if self.codebook.dtype != np.float32:
                 print("Warning: initialcodebook was not float32. A 32-bit "
                       "copy was made")
-                self.codebook = np.float32(self.codebook)
+                self.codebook = np.array(self.codebook, dtype=np.float32)
         self.codebook.shape = (codebook_size, )
 
     def cluster(self, algorithm=None):

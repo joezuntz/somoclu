@@ -48,10 +48,7 @@ except EnvironmentError:
     CUDA = None
     print("Proceeding without CUDA")
 
-try:
-    numpy_include = numpy.get_include()
-except AttributeError:
-    numpy_include = numpy.get_numpy_include()
+numpy_include = numpy.get_include()
 
 def customize_compiler_for_nvcc(self):
     '''This is a verbatim copy of the NVCC compiler extension from

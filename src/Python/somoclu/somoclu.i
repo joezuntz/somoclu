@@ -18,7 +18,7 @@ using namespace std;
 %exception train {
    try {
       $action
-   } catch (runtime_error &e) {
+   } catch (std::runtime_error &e) {
       PyErr_SetString(PyExc_RuntimeError, const_cast<char*>(e.what()));
       return NULL;
    }
