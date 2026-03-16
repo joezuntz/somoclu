@@ -1,1 +1,0 @@
-/home/runner/work/somoclu/somoclu/src/denseCpuKernels.cpp
