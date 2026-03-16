@@ -32,6 +32,8 @@
 #include "somoclu.h"
 #include "io.h"
 
+using namespace std;
+
 void cli_abort(string err) {
 #ifdef HAVE_MPI
     int rank = 0;
